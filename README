@@ -1,0 +1,120 @@
+========================================================================
+==
+==	R E A D M E
+==
+========================================================================
+
+
+
+Overview
+========================================================================
+This is the top-level README file associated with the Tielebein et al. 
+Senior Research thesis project and code. 
+
+The vast majority of this project and code was written by Victoria Tielebein 
+under the guidance of Prof. Gordon T. Richards and Dr. Nicholas P. Ross, at
+Drexel University during the Academic Year 2013-2014. 
+
+
+Purpose
+========================================================================
+To query the SDSS, SDSS-III and potentially future [SDSS-IV] spectroscopic
+databases to look for objects (quasars) that have multiple repeat spectra, 
+and to see what, if anything, has changed between these spectra when observed
+at different epochs. 
+
+
+Code Repository Location
+========================================================================
+https://github.com/QuasarSpectralSoftware/Application
+
+
+Installation 
+========================================================================
+Please see the INSTALL file in this directory. 
+
+
+
+Top Level Overview of .java routines 
+========================================================================
+/cos_pc19a_npr/BOSS/Tori/SeniorResearch/src/downloadCenter
+
+  Controller.java
+  - Runs the application and initializes the main menu (needs to be separate 
+    because of the way java handles static variable requirements in the main function).
+  
+  Configurations.java
+  - This class contains all of the globally-used settings for the
+    application, such as the table name and formatting, the angular
+    distance for defining a match, and the distance between
+    fibers on a plate. 
+  
+  WorkingDirectory.java
+  - Enumerated type designed to locate the working directory of this
+    application and keep track of/create any and all sub-directories.
+
+  TableElement.java
+  - Keeps track of all administrative information of a .FITS file, knowing how
+    to parse from and create Strings for outputting to a table file. 
+
+  FileManager.java
+  - Contains algorithms to download files and update the table with new downloads 
+    and matches asynchronously, meaning that UI operation will continue throughout
+    and the spectra reviewer can still be used in the meantime. 
+    
+  SDSS.java
+  - This class keeps track of the thresholds between data releases, as well as the 
+    URL location of files for each one. This needs to be updated if files located at
+    a different location on the Internet or with different formatting requirements 
+    are desired.
+    
+  ErrorLogger.java
+  - A class designed to allow easy error logging. Not currently in use.  
+    
+  
+  ==== User Interface (UI) Related Classes ====  
+    
+  TableElementModel.java
+  - This creates the display of downloaded files for the main menu, and keeps track of 
+    all of the files on the computer when the application is running.
+    
+  PlotUI.java
+  - Sets up the framework for displaying one or two plots. Two will be displayed
+    if only two spectra are selected, the second plot being the calculated ratio.
+    If there are any other number of spectra, all of them will plot by default,
+    but the linked plot options UI will allow for more specific selection.
+    
+  SpectrumPlotter.java
+  - This is the spectrum window itself, which takes in the data for however many 
+    spectra and plots it (applying whatever plot options are passed in). The 
+    plotting interface has at most two of these objects (one for the comparison, 
+    and one for the ratio, if it is needed).
+    
+  PlotOptionsUI.java
+  - Keeps track of all of the plot options that get passed from
+    comparison to comparison when the next button is hit. Contains
+    the UI for setting these values as well. 
+    
+  MainAndDownloadUI.java
+  - Loads the main UI and contains the logic for initializing a download.
+  
+  Label.java
+  - This is essentially the same as a JLabel, but allows for easier and more 
+    dynamic font specification.
+  
+  TextField.java
+  - Similar to a JTextField, but with checks for valid input and preset field 
+    types.
+
+
+Notes
+========================================================================
+
+
+
+Last Updated
+=======================================================================
+Thu Mar  6  17:01:58 EST 2014  by      VT and NPR
+Tue June 10 13:05:20 EST 2014  by	   VT
+
+
